@@ -1,0 +1,7 @@
+//Name: HDD Failiong
+//Relevance to be added
+if(not exists (select objects "* from MSStorageDriver_FailurePredictStatus" of wmi "root\WMI") whose(string value of property "PredictFailure" of it as boolean = TRUE)) then "<no failures predicted>" else concatenation "," of (string value of property "PredictFailure" of it & " - " & string value of property "InstanceName" of it) of (select objects "* from MSStorageDriver_FailurePredictStatus" of wmi "root\WMI") whose(string value of property "PredictFailure" of it as boolean = TRUE)
+
+//Name Nam of failling drive
+//Pulls faling drive info so that you are able to know which drive needs to be replaced
+(string values of selects "Caption from Win32_DiskDrive WHERE Status!='OK'" of wmi)
