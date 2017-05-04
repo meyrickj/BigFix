@@ -1,0 +1,11 @@
+// install bomgar client
+wait "{pathname of system folder & "\msiexec.exe"}" /i "{(pathname of client folder of current site) & "\__Download\bomgar-scc-win64.msi"}" KEY_INFO=w0dc305h8w671g65ydhgyhyh6y6y6z7wzeh1dic40jc90 /qn /norestart
+
+//sent notification email that fixlet has run
+
+// NOTIFICATION_START
+// to: "e1w1w7w7d1x1d4j3@wharton.slack.com"
+// from: "fnce-computing@wharton.upenn.edu"
+// subject: "Task '{actionName}' with ID {actionID} has completed"
+// body: "Bomgar has been Successfully installed Review the results of Baseline '{actionName}' (ID: {actionID}) login to the bomgar rep console to check status https://www.upenn.bomgarcloud.com/login"
+// NOTIFICATION_END
