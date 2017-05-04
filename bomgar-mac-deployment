@@ -1,7 +1,7 @@
-extract bomgar-scc-w0dc301g6xxdhwfwj7dyx6dizjhwgg666hhi8jc40jc90dmg.tmp
+
 
 // mount the disk image 
-wait hdiutil attach -noverify -nobrowse /Users/Shared/bomgar-scc-w0dc301g6xxdhwfwj7dyx6dizjhwgg666hhi8jc40jc90.dmg  
+wait hdiutil attach -noverify -nobrowse /Users/Shared/bomgar-scc-*INSERT-BOMGAR-KEY HERE FROM GENERATED FILE.dmg  
 
 //install bomgar
 wait "/Volumes/bomgar-scc/Double-Click To Start Support Session.app/Contents/MacOS/sdcust"
