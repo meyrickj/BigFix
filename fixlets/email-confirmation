@@ -1,0 +1,24 @@
+//Used at the end of a baseline that will send an email notification that the baseline has completed running 
+
+// Create the script file
+delete __createfile
+createfile until END_OF_FILE
+
+$PCName = $env:COMPUTERNAME
+$EmailBody = "Bigfix Software deployment has complete on $PCName Check bigfix for any errors" 
+$EmailFrom = "$PCName <FROM_EMAIL>"
+$EmailTo = "RCEIVER_EMAIL_HERE" 
+$EmailSubject = "$PCName BigFix Software deployment baseline has complete"
+$SMTPServer = "SMTPADDRESSHERE"
+Write-host "Sending Email"
+Send-MailMessage -From $EmailFrom -To $EmailTo -Subject $EmailSubject -body $EmailBody -SmtpServer $SMTPServer
+
+END_OF_FILE
+delete script.ps1
+move __createfile script.ps1
+
+// Run Script
+waithidden { pathname of file ((it as string) of value "Path" of key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" of native registry) } -ExecutionPolicy Bypass -File script.ps1
+
+
+
