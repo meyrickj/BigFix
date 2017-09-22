@@ -1,0 +1,17 @@
+action uses wow64 redirection {not x64 of operating system}
+
+// Create the script file 
+delete __createfile 
+createfile until END_OF_FILE 
+
+if (Get-ItemProperty -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* |
+    Where-Object DisplayName -eq CCleaner -OutVariable Results) {
+    & "$($Results.InstallLocation)\uninst.exe" /S
+} 
+
+END_OF_FILE 
+delete script.ps1 
+move __createfile script.ps1 
+// Run Script 
+waithidden { pathname of file ((it as string) of value "Path" of key "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerShell" of native registry) } -ExecutionPolicy Bypass -File script.ps1 
+
