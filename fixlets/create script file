@@ -1,3 +1,5 @@
+action uses wow64 redirection {not x64 of operating system}
+
 // Create the script file
 delete __createfile
 createfile until END_OF_FILE
